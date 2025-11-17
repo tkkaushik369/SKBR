@@ -34,5 +34,8 @@
 		"webpack-dev-server": "^5.1.0",
 		"webpack-merge": "^6.0.1"
 	},
-	"description": ""
+	"description": "",
+	"dependencies": {
+		"gh-pages": "^6.3.0"
+	}
 }
