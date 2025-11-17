@@ -37,6 +37,10 @@ module.exports = {
 					to: path.resolve(__dirname, '../dist/client'),
 				},
 				{
+					from: path.resolve(__dirname, './index.html'),
+					to: path.resolve(__dirname, '../dist'),
+				},
+				{
 					from: path.resolve(__dirname, './client/images'),
 					to: path.resolve(__dirname, '../dist/client/images'),
 				},
