@@ -1,0 +1,62 @@
+import * as THREE from 'three'
+import { SimulatorBase, spring } from './SimulatorBase'
+
+export class SpringSimulator extends SimulatorBase {
+	position: number
+	velocity: number
+
+	target: number
+	mass: number
+	damping: number
+
+	constructor(fps: number, mass: number, damping: number, startPosition = 0, startVelocity = 0) {
+		// Construct base
+		super(fps)
+
+		// Simulated values
+		this.position = 0
+		this.velocity = 0
+
+		// Simulation parameters
+		this.target = 0
+		this.mass = mass
+		this.damping = damping
+
+		// Initialize cache by pushing two frames
+		for (let i = 0; i < 2; i++) {
+			this.cache.push({
+				position: startPosition,
+				velocity: startVelocity,
+			})
+		}
+	}
+
+	/**
+	 * Advances the simulation by given time step
+	 * @param {number} timeStep
+	 */
+	simulate(timeStep: number) {
+		if (timeStep == undefined) console.log('Pass the timeStep!')
+
+		this.generateFrames(timeStep)
+
+		// Return values interpolated between cached frames
+		this.position = THREE.MathUtils.lerp(
+			this.cache[0].position,
+			this.cache[1].position,
+			this.offset / this.frameTime
+		)
+		this.velocity = THREE.MathUtils.lerp(
+			this.cache[0].velocity,
+			this.cache[1].velocity,
+			this.offset / this.frameTime
+		)
+	}
+
+	/**
+	 * Gets another simulation frame
+	 */
+	getFrame(isLastFrame: boolean) {
+		return spring(this.lastFrame().position, this.target, this.lastFrame().velocity, this.mass, this.damping)
+	}
+}

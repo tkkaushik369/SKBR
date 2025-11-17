@@ -1,0 +1,117 @@
+:root {
+	--top: 54px;
+	--bottom: 190px;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	overflow: hidden;
+	margin: 0px;
+	color: rgba(200, 200, 200, 0.6);
+	background-color: rgba(1, 1, 1, 1);
+	outline: 1px solid rgba(0, 250, 250, 0.2);
+	outline-offset: -2px;
+}
+
+.bodyTransparent {
+	background-color: rgba(1, 1, 1, 0.01);
+}
+
+.Hide {
+	opacity: 0.2;
+}
+
+#pingStats {
+	position: absolute;
+	top: var(--top);
+	left: 4px;
+	width: 350px;
+	height: calc(100% - var(--top) - var(--bottom));
+	font-family: monospace;
+	border: 1px solid rgba(120, 120, 120, 0.3);
+	box-sizing: border-box;
+	user-select: none;
+	overflow-y: scroll;
+	scrollbar-width: none;
+
+	background-color: rgba(10, 10, 10, 0.3);
+}
+
+#pingStats::-webkit-scrollbar {
+	display: none;
+}
+
+#pingStats.noBorder {
+	border: none;
+}
+
+.ping {
+	border-bottom: 1px solid green;
+}
+.noPing {
+	border-bottom: 1px solid red;
+}
+
+.lil-gui {
+	opacity: 0.8;
+}
+
+.label {
+	font-family: monospace;
+	color: rgba(250, 180, 0, 1.0);
+	font-size: 12px;
+	font-weight: bold;
+	user-select: none;
+}
+
+#controls {
+	position: absolute;
+	bottom: 4px;
+	left: 4px;
+	font-family: 'Courier New', Courier, monospace;
+	user-select: none;
+}
+
+#controls .controls-title {
+	color: #cccccc;
+}
+
+#controls .ctrl-row {
+	color: #66cc66;
+	padding: 8px;
+}
+
+#controls .ctrl-key {
+	color: #cc6666;
+	padding: 4px;
+	margin: 2px;
+	border: 1px solid #cc6666;
+}
+
+#controls .ctrl-desc {
+	color: #6666cc;
+}
+
+#chat {
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	font-family: 'Courier New', Courier, monospace;
+	user-select: none;
+	opacity: 0.4;
+}
+
+#controls-main {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
